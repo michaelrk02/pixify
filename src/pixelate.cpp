@@ -18,8 +18,8 @@ bool pixelate(SDL_Surface *image, float scale) {
     unsigned int stride = static_cast<unsigned int>(std::ceil((float)image->h / height));
     for (int i = 0; i < width; i++) {
         for (int j = 0; j < height; j++) {
-            unsigned int left = i * stride;
-            unsigned int top = j * stride;
+            unsigned int left = std::min(i * stride, static_cast<unsigned int>(image->w - stride));
+            unsigned int top = std::min(j * stride, static_cast<unsigned int>(image->h - stride));
             unsigned int right = std::min((i + 1) * stride, static_cast<unsigned int>(image->w));
             unsigned int bottom = std::min((j + 1) * stride, static_cast<unsigned int>(image->h));
 
