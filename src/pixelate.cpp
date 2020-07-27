@@ -45,7 +45,7 @@ bool pixelate(SDL_Surface *image, float scale) {
                 }
             }
 
-            unsigned int size = stride * stride;
+            unsigned int size = (right - left) * (bottom - top);
             unsigned int ravg = CHANGE_COLOR((rtotal / size) & 0xFF);
             unsigned int gavg = CHANGE_COLOR((gtotal / size) & 0xFF);
             unsigned int bavg = CHANGE_COLOR((btotal / size) & 0xFF);
